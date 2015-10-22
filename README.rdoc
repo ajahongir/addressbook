@@ -1,5 +1,11 @@
 How to use
 
+database: sqlight
+
+rails - v4.2.4
+
+ruby - v2.2
+
 rake db:create
 
 rake db:mimgrate

@@ -1,28 +1,23 @@
-== README
+A small "Address book"
+app that allows:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+listing/creating/editing/removing contacts and showing a single contact on its own page
+exporting/importing contacts to/from CSV file (overwrite contacts with the same full name on import)
+sharing contact details by email
+searching for contacts (optional, if you have time left)
 
-Things you may want to cover:
++Each contact should have:
 
-* Ruby version
++first name
++last name
++multiple emails
++multiple phone numbers Each full name should be unique. Each contact should have at least one phone number or email.
 
-* System dependencies
+Requirements:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
++latest Rails and Ruby versions
++first git commit right after rails new, other ones as you like
+Slim, Coffee, SASS (BEM if you like it), I18n, RSpec or minitest, SQLite (just for easy setup)
++server side model validations
+simple client side input validation for phone and email formats with CoffeeScript/jQuery
+no scaffolding, no bootstrap, just some clean and simple design up to your taste

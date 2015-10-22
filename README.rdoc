@@ -1,9 +1,11 @@
-
-
-*How to use
+How to use
 
 rake db:create
+
 rake db:mimgrate
+
 rake db:seed
+
 rake test
+
 rails s

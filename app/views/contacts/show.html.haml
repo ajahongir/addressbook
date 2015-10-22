@@ -2,21 +2,21 @@
 %div
   %b
     %label First name:
-  = @contact.first_name
+  = resource.first_name
 %div
   %b
     %label Last name:
-  = @contact.last_name
+  = resource.last_name
 %div
   %b
     %label Phones:
-  = @contact.phones.join('; ')
+  = resource.phones.join('; ')
 %div
   %b
     %label Emails:
-  = @contact.emails.join('; ')
+  = resource.emails.join('; ')
 %br
 %br
 %a{href: contacts_path} contacts
 |
-%a{href: edit_contact_path(@contact)} edit
+%a{href: edit_contact_path(resource)} edit

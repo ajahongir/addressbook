@@ -1,40 +1,36 @@
-class ContactsController < ApplicationController
+class ContactsController < InheritedResources::Base
+  respond_to :html, :json
 
   def index
     @contacts = Contact.all
   end
 
   def create
-    @contact = Contact.new(contact_params)
-    if @contact.save
-      redirect_to @contact
+    resource = Contact.new contact_params
+    if resource.save
+      redirect_to contact_path(resource)
     else
       render :new
     end
   end
 
   def show
-    @contact = Contact.find params[:id]
-    respond_with @contact
   end
 
   def destroy
-    contact = Contact.find params[:id]
-    contact.destroy
+    resource.destroy
     redirect_to contacts_path
   end
 
   def update
-    @contact = Contact.find params[:id]
-    if @contact.update(contact_params)
-      redirect_to contact_path(@contact)
+    if resource.update(contact_params)
+      redirect_to contact_path(resource)
     else
       render :edit
     end
   end
 
   def edit
-    @contact = Contact.find params[:id]
   end
 
   def new

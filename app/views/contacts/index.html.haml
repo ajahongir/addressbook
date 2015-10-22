@@ -1,0 +1,21 @@
+%h1 Contacts
+%table
+  %thead
+    %tr
+      %th Full name
+      %th Phones
+      %th Emails
+      %th
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td=contact.full_name
+        %td=contact.phones.join('; ')
+        %td=contact.emails.join('; ')
+        %td
+          %a{href: edit_contact_path(contact)} edit
+          =link_to 'destroy', contact, confirm: 'Are you sure you want to destroy your account?', method: :delete
+
+%br
+%br
+%a{href: new_contact_path} add contact

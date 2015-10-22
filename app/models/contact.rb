@@ -9,4 +9,22 @@ class Contact < ActiveRecord::Base
   def full_name
     "#{ first_name } #{ last_name }"
   end
+
+  def phones
+    Array.wrap(self[:phones])
+  end
+
+  def emails
+    Array.wrap(self[:emails])
+  end
+
+  # Phone = Struct.new(:phone)
+  # Email = Struct.new(:email)
+  # def phones_form
+  #   Array.wrap(self[:phones]).map { |phone| Phone.new(phone) }
+  # end
+
+  # def emails_form
+  #   Array.wrap(self[:emails]).map { |email| Email.new(email) }
+  # end
 end

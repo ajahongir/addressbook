@@ -1,0 +1,22 @@
+%h1 View Contact
+%div
+  %b
+    %label First name:
+  = @contact.first_name
+%div
+  %b
+    %label Last name:
+  = @contact.last_name
+%div
+  %b
+    %label Phones:
+  = @contact.phones.join('; ')
+%div
+  %b
+    %label Emails:
+  = @contact.emails.join('; ')
+%br
+%br
+%a{href: contacts_path} contacts
+|
+%a{href: edit_contact_path(@contact)} edit

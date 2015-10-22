@@ -21,3 +21,10 @@ Slim, Coffee, SASS (BEM if you like it), I18n, RSpec or minitest, SQLite (just f
 +server side model validations
 simple client side input validation for phone and email formats with CoffeeScript/jQuery
 no scaffolding, no bootstrap, just some clean and simple design up to your taste
+
+
+rake db:create
+rake db:mimgrate
+rake db:seed
+rake test
+rails s

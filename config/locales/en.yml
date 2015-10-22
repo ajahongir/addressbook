@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  model:
+    contact:
+      at_least_one_contact: Please add at least one contact.
+      at_least_one_name: Please add at least one name.
+      full_name_taken: already been taken

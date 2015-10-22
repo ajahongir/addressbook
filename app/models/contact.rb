@@ -1,7 +1,8 @@
 class Contact < ActiveRecord::Base
-  validates :first_name, uniqueness: { scope: :last_name, message: "full_name already been taken" }
-  validates :first_name, presence: true, if: "last_name.blank?"
-  validates :phones, presence: true, if: "emails.blank?"
+  validates :first_name, uniqueness: { scope: :last_name }, if: "first_name.present?"
+  validates :last_name, uniqueness: { scope: :first_name }, if: "last_name.present?"
+  validate :at_least_one_name
+  validate :at_least_one_contact
 
   serialize :phones, JSON
   serialize :emails, JSON
@@ -14,17 +15,28 @@ class Contact < ActiveRecord::Base
     Array.wrap(self[:phones])
   end
 
+  def phones_str
+    phones.join(';')
+  end
+
   def emails
     Array.wrap(self[:emails])
   end
 
-  # Phone = Struct.new(:phone)
-  # Email = Struct.new(:email)
-  # def phones_form
-  #   Array.wrap(self[:phones]).map { |phone| Phone.new(phone) }
-  # end
+  def emails_str
+    emails.join(';')
+  end
 
-  # def emails_form
-  #   Array.wrap(self[:emails]).map { |email| Email.new(email) }
-  # end
+  private
+  def at_least_one_contact
+    if self[:phones].blank? && self[:emails].blank?
+      errors[:base] << I18n.t('model.contact.at_least_one_contact')
+    end
+  end
+
+  def at_least_one_name
+    if self[:first_name].blank? && self[:last_name].blank?
+      errors[:base] << I18n.t('model.contact.at_least_one_name')
+    end
+  end
 end

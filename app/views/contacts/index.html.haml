@@ -14,8 +14,13 @@
         %td=contact.emails.join('; ')
         %td
           %a{href: edit_contact_path(contact)} edit
+          |
           =link_to 'destroy', contact, confirm: 'Are you sure you want to destroy your account?', method: :delete
-
-%br
 %br
 %a{href: new_contact_path} add contact
+|
+%a{href: export_contacts_path} export contacts
+%br
+%br
+=render partial: 'import'
+%br

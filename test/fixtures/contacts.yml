@@ -11,7 +11,6 @@ valid_contact:
   phones: 121212,121212
   emails:
 
-# column: value
-#
-invalid_contact: {}
-#  column: value
+invalid_contact:
+  first_name: Peter
+  last_name: Barber

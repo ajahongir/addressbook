@@ -6,7 +6,7 @@ class ContactsController < InheritedResources::Base
   end
 
   def create
-    resource = Contact.new contact_params
+    @contact = Contact.new contact_params
     if resource.save
       redirect_to contact_path(resource)
     else
@@ -37,8 +37,23 @@ class ContactsController < InheritedResources::Base
     @contact = Contact.new
   end
 
+  def import
+    if params[:file].present? && valid_file?
+      ImportService.new(params[:file].tempfile).call
+    end
+    redirect_to root_path
+  end
+
+  def export
+    send_data ExportService.new.call, filename: 'export.csv'
+  end
+
   private
   def contact_params
     params.require(:contact).permit(:first_name, :last_name, :phones, :emails)
+  end
+
+  def valid_file?
+    File.extname(params[:file].tempfile.path) == ".csv"
   end
 end

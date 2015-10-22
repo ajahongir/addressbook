@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.field_with_errors input, input:invalid {
+  border: 1px solid red;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0px;
+  border: 1px solid grey;
+  td, th {
+    padding: 5px;
+    border: 1px solid grey;
+  }
+}
+

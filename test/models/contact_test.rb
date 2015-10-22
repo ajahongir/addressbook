@@ -11,7 +11,7 @@ describe Contact do
 
   describe "valid" do
     it "full name must be" do
-      contact = contacts :valid_contact
+      contact = Contact.new first_name: "Fname", emails: 'user@example.com'
       value(contact).must_be :valid?
     end
   end

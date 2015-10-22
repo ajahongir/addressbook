@@ -1,9 +1,21 @@
 = form_for resource do |form|
+  %ul
+    - resource.errors.full_messages.each do |msg|
+      %li= msg
+
+  = form.label :first_name
+  %br
   = form.text_field :first_name
+  %br
+  = form.label :last_name
   %br
   = form.text_field :last_name
   %br
+  = form.label :phones
+  %br
   = form.text_field :phones
+  %br
+  = form.label :emails
   %br
   = form.text_field :emails
   %br

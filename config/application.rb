@@ -26,5 +26,7 @@ module Addressbook
     config.generators do |g|
       g.test_framework :minitest, spec: true
     end
+
+    config.autoload_paths += Dir["#{ config.root }/services"]
   end
 end
